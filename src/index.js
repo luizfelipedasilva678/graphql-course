@@ -5,6 +5,11 @@ const server = new ApolloServer({
     type Query {
       hello: String
       hi: String
+      id: ID
+      age: Int
+      average: Float
+      married: Boolean!
+      arrayString: [String!]!
     }
   `,
   resolvers: {
@@ -15,6 +20,11 @@ const server = new ApolloServer({
       hi: () => {
         return 'Hi';
       },
+      id: () => '213123',
+      age: () => 30,
+      average: () => 4.5,
+      married: () => true,
+      arrayString: () => ['Hi', 'Hello'],
     },
   },
 });
