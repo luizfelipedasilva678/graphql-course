@@ -1,2 +1,2 @@
-# graphql-course
+# GraphQL Course
 GraphQL files
