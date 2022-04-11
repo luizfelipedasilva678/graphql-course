@@ -21,6 +21,13 @@ query GET_POST {
   }
 }
 
+query getUSer {
+  user(id: "903") {
+    id
+    firstName
+  }
+}
+
 
 
 
