@@ -48,12 +48,29 @@ query getPost($postId: ID!) {
   }
 }
 
-query getPost {
+query getPosts {
   postsExample:posts {
     id
     unixTimeStamp
   }
 }
+
+
+fragment post on Post {
+  id
+  title
+}
+
+query getPost {
+  post1:post(id: "860") {
+    ...post
+  }
+
+  post2:post(id: "783") {
+    ...post
+  }
+}
+
 
 
 
