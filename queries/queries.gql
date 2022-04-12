@@ -71,6 +71,18 @@ query getPost {
   }
 }
 
+query getPosts {
+  posts(input: {
+    _sort: "id",
+    _order: "desc",
+    _start: 0,
+    _limit: 1
+  }) {
+    id
+    title
+  }
+}
+
 
 
 

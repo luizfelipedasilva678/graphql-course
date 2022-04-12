@@ -5,8 +5,9 @@ export const postResolvers = {
       return response.json();
     },
 
-    posts: async (_, __, { getPosts }) => {
-      const response = await getPosts();
+    posts: async (_, { input }, { getPosts }) => {
+      const apiFiltersInput = new URLSearchParams(input);
+      const response = await getPosts('/?' + apiFiltersInput);
       return response.json();
     },
   },
