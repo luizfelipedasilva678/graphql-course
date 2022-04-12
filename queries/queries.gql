@@ -83,6 +83,19 @@ query getPosts {
   }
 }
 
+query getPost {
+  post(id: "783") {
+    ... on Post {
+      id
+      title
+    }
+
+    ... on PostNotFoundError {
+      statusCode
+    }
+  }
+}
+
 
 
 
