@@ -38,5 +38,15 @@ query getPost {
   }
 }
 
+query getPost($postId: ID!) {
+  post(id: $postId) {
+    body
+    title
+    indexRef
+    createdAt
+    id
+  }
+}
+
 
 
