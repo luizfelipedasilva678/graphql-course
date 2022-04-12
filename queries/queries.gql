@@ -48,5 +48,12 @@ query getPost($postId: ID!) {
   }
 }
 
+query getPost {
+  postsExample:posts {
+    id
+    unixTimeStamp
+  }
+}
+
 
 
