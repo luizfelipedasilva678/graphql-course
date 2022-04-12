@@ -10,4 +10,10 @@ export const postResolvers = {
       return response.json();
     },
   },
+  Post: {
+    unixTimeStamp: ({ createdAt }) => {
+      const timeStamp = new Date(createdAt).getTime() / 1000;
+      return `${Math.floor(timeStamp)}`;
+    },
+  },
 };
