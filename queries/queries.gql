@@ -28,6 +28,15 @@ query getUSer {
   }
 }
 
+query getPost {
+  post(id: "15") {
+    body
+    title
+    indexRef
+    createdAt
+    id
+  }
+}
 
 
 
