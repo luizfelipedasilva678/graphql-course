@@ -34,6 +34,10 @@ export const postResolvers = {
       const timeStamp = new Date(createdAt).getTime() / 1000;
       return `${Math.floor(timeStamp)}`;
     },
+    user: async ({ userId }, _, { getUsers }) => {
+      const user = await getUsers('/' + userId);
+      return user.json();
+    },
   },
   PostResult: {
     __resolveType: (obj) => {

@@ -109,6 +109,35 @@ query getPost {
   }
 }
 
+query QueryTrivialResolver($postId: ID!) {
+  post(id: $postId) {
+    ... on Post {
+      id
+      title
+      user {
+        id
+        lastName
+        firstName
+      }
+    }
+
+    ... on PostError {
+      statusCode
+    }
+  }
+}
+
+query QueryTrivialResolver {
+  posts {
+    title
+    user {
+      id
+      firstName
+    }
+  }
+}
+
+
 
 
 
