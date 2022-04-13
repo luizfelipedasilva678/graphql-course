@@ -1,14 +1,3 @@
-import DataLoader from 'dataloader';
-import fetch from 'node-fetch';
-
-const userDataLoader = new DataLoader(async (ids) => {
-  const urlQuery = ids.join('&id=');
-  const url = `http://localhost:3000/users?id=${urlQuery}`;
-  const response = await fetch(`${url}`);
-  const users = await response.json();
-  return ids.map((id) => users.find((user) => user.id === id));
-});
-
 export const postResolvers = {
   Query: {
     post: async (_, { id }, { getPosts }) => {
@@ -45,7 +34,7 @@ export const postResolvers = {
       const timeStamp = new Date(createdAt).getTime() / 1000;
       return `${Math.floor(timeStamp)}`;
     },
-    user: async ({ userId }, _) => {
+    user: async ({ userId }, _, { userDataLoader }) => {
       return userDataLoader.load(userId);
     },
   },
