@@ -9,4 +9,9 @@ export const userResolvers = {
       return users.json();
     },
   },
+  User: {
+    posts: ({ id }, _, { postDataLoader }) => {
+      return postDataLoader.load(id);
+    },
+  },
 };

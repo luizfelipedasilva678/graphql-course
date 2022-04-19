@@ -137,7 +137,24 @@ query QueryTrivialResolver {
   }
 }
 
+query UsersWithPosts {
+  users {
+    id
 
+    posts {
+      id
+      title
+    }
+  }
+}
 
+query UserWithPosts($userId: ID!) {
+  user(id: $userId) {
+    id
+    posts {
+      title
+    }
+  }
+}
 
 
