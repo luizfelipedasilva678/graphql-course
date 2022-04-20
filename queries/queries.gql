@@ -157,4 +157,21 @@ query UserWithPosts($userId: ID!) {
   }
 }
 
+query PostWithDataSource($postId: ID!) {
+  post(id: $postId) {
+    ... on PostError {
+      statusCode
+    }
 
+    ... on Post {
+      title
+    }
+  }
+}
+
+query PostsWithDataSource {
+  posts {
+    id
+    title
+  }
+}

@@ -1,8 +1,7 @@
 export const postResolvers = {
   Query: {
-    post: async (_, { id }, { getPosts }) => {
-      const response = await getPosts('/' + id);
-      const post = await response.json();
+    post: async (_, { id }, { dataSources }) => {
+      const post = await dataSources.postApi.getPost(id);
 
       if (Math.random() > 0.5) {
         return {
@@ -23,10 +22,9 @@ export const postResolvers = {
       return post;
     },
 
-    posts: async (_, { input }, { getPosts }) => {
-      const apiFiltersInput = new URLSearchParams(input);
-      const response = await getPosts('/?' + apiFiltersInput);
-      return response.json();
+    posts: async (_, { input }, { dataSources }) => {
+      const posts = await dataSources.postApi.getPosts(input);
+      return posts;
     },
   },
   Post: {
