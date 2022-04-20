@@ -10,8 +10,8 @@ export const userResolvers = {
     },
   },
   User: {
-    posts: ({ id }, _, { postDataLoader }) => {
-      return postDataLoader.load(id);
+    posts: ({ id }, _, { dataSources }) => {
+      return dataSources.postApi.batchLoadByUserId(id);
     },
   },
 };
