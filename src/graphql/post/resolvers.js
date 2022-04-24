@@ -66,4 +66,17 @@ export const postResolvers = {
       return null;
     },
   },
+  Mutation: {
+    createPost: async (_, args, { dataSources }) => {
+      console.log(args, dataSources);
+      return {
+        id: '601',
+        title: 'DSFASFSAF',
+        body: 'sdfsdfsadfsdaf',
+        userId: '502',
+        indexRef: 19,
+        createdAt: '2017-04-26T19:39.05.420Z',
+      };
+    },
+  },
 };

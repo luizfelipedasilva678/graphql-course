@@ -1,0 +1,7 @@
+mutation createPost($createPostId: ID!) {
+  createPost(id: $createPostId) {
+    ... on Post {
+      id
+    }
+  }
+}
