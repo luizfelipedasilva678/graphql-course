@@ -55,7 +55,6 @@ query getPosts {
   }
 }
 
-
 fragment post on Post {
   id
   title
@@ -173,5 +172,16 @@ query PostsWithDataSource {
   posts {
     id
     title
+  }
+}
+
+query Post($postId: ID!) {
+  post(id: $postId) {
+    ... on Post {
+      title,
+      user {
+        firstName
+      }
+    }
   }
 }

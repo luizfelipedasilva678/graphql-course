@@ -5,3 +5,15 @@ mutation createPost($createPostId: ID!) {
     }
   }
 }
+
+mutation CreatePost($data: createPostInput!) {
+  createPost(data: $data) {
+    ... on Post {
+      id
+    }
+
+    ... on PostError {
+      statusCode
+    }
+  }
+}

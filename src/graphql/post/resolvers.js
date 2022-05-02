@@ -32,8 +32,8 @@ export const postResolvers = {
       const timeStamp = new Date(createdAt).getTime() / 1000;
       return `${Math.floor(timeStamp)}`;
     },
-    user: async ({ userId }, _, { userDataLoader }) => {
-      return userDataLoader.load(userId);
+    user: async ({ userId }, _, { dataSources }) => {
+      return dataSources.usersApi.batchLoadByPostId(userId);
     },
   },
   PostResult: {
@@ -67,16 +67,8 @@ export const postResolvers = {
     },
   },
   Mutation: {
-    createPost: async (_, args, { dataSources }) => {
-      console.log(args, dataSources);
-      return {
-        id: '601',
-        title: 'DSFASFSAF',
-        body: 'sdfsdfsadfsdaf',
-        userId: '502',
-        indexRef: 19,
-        createdAt: '2017-04-26T19:39.05.420Z',
-      };
+    createPost: async (_, { data }, { dataSources }) => {
+      return dataSources.postApi.createPost(data);
     },
   },
 };

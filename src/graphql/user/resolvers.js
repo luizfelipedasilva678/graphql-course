@@ -1,12 +1,12 @@
 export const userResolvers = {
   Query: {
-    user: async (_, { id }, { getUsers }) => {
-      const user = await getUsers('/' + id);
-      return user.json();
+    user: async (_, { id }, { dataSources }) => {
+      const user = await dataSources.usersApi.getUser(id);
+      return user;
     },
-    users: async (_, __, { getUsers }) => {
-      const users = await getUsers();
-      return users.json();
+    users: async (_, __, { dataSources }) => {
+      const users = await dataSources.usersApi.getUsers();
+      return users;
     },
   },
   User: {
